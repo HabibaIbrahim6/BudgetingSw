@@ -2,10 +2,22 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Controller class to manage expense operations such as adding, saving, and listing expenses.
+ */
 public class ExpenseController {
     private static final String EXPENSE_FILE = "expense.txt";
     private List<Expense> expenses = new ArrayList<>();
 
+    /**
+     * Adds a new expense and saves it to the file.
+     *
+     * @param amount      The amount of the expense.
+     * @param category    The category of the expense (e.g., food, transport).
+     * @param date        The date of the expense.
+     * @param description A short description of the expense.
+     * @return The created Expense object if successfully saved, otherwise null.
+     */
     public Expense addExpense(double amount, String category, Date date, String description) {
         String expenseId = "EXP-" + System.currentTimeMillis();
         Expense newExpense = new Expense(expenseId, amount, category, date, description);
@@ -17,6 +29,12 @@ public class ExpenseController {
         return null;
     }
 
+    /**
+     * Saves an expense to the file in CSV format.
+     *
+     * @param expense The expense to save.
+     * @return true if the expense was saved successfully, false otherwise.
+     */
     private boolean saveExpenseToFile(Expense expense) {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -37,6 +55,11 @@ public class ExpenseController {
         }
     }
 
+    /**
+     * Loads all expenses from the file and returns them as a list.
+     *
+     * @return A list of all expenses stored in the file.
+     */
     public List<Expense> listExpenses() {
         expenses.clear(); // Clear current list before reloading
 

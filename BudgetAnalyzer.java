@@ -1,10 +1,17 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * The BudgetAnalyzer class analyzes income and expense data from files and provides budget insights.
+ * It calculates total income and expenses, displays budget trends, and identifies surplus or deficit.
+ */
 public class BudgetAnalyzer {
     private static final String INCOME_FILE = "income.txt";
     private static final String EXPENSE_FILE = "expense.txt";
 
+    /**
+     * Analyzes the budget by calculating total income and expenses, and displays the surplus or deficit.
+     */
     public void analyzeBudget() {
         double totalIncome = calculateTotal(INCOME_FILE);
         double totalExpense = calculateTotal(EXPENSE_FILE);
@@ -24,6 +31,11 @@ public class BudgetAnalyzer {
         }
     }
 
+    /**
+     * Calculates the total amount from a given file, summing up the amounts listed in the file.
+     * @param filename the name of the file containing the income or expense data
+     * @return the total amount from the file
+     */
     private double calculateTotal(String filename) {
         double total = 0.0;
         try (Scanner scanner = new Scanner(new File(filename))) {
@@ -35,17 +47,20 @@ public class BudgetAnalyzer {
                         try {
                             total += Double.parseDouble(parts[1].trim());
                         } catch (NumberFormatException e) {
-                            System.out.println("⚠️ Invalid number in " + filename + ": " + parts[1]);
+                            System.out.println("Invalid number in " + filename + ": " + parts[1]);
                         }
                     }
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("⚠️ " + filename + " not found. Starting with zero.");
+            System.out.println("" + filename + " not found. Starting with zero.");
         }
         return total;
     }
 
+    /**
+     * Displays the budget trends by grouping income and expenses by date and printing them.
+     */
     public void displayBudgetTrends() {
         Map<String, Double> incomeByDate = groupByDate(INCOME_FILE);
         Map<String, Double> expenseByDate = groupByDate(EXPENSE_FILE);
@@ -66,6 +81,11 @@ public class BudgetAnalyzer {
         }
     }
 
+    /**
+     * Groups the data from the given file by date and calculates the total amount for each date.
+     * @param filename the name of the file containing the income or expense data
+     * @return a map with dates as keys and the total amount for each date as values
+     */
     private Map<String, Double> groupByDate(String filename) {
         Map<String, Double> result = new HashMap<>();
         try (Scanner scanner = new Scanner(new File(filename))) {
@@ -79,13 +99,13 @@ public class BudgetAnalyzer {
                             double amount = Double.parseDouble(parts[1].trim());
                             result.put(date, result.getOrDefault(date, 0.0) + amount);
                         } catch (NumberFormatException e) {
-                            System.out.println("⚠️ Invalid data in " + filename + ": " + line);
+                            System.out.println(" Invalid data in " + filename + ": " + line);
                         }
                     }
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("⚠️ " + filename + " not found.");
+            System.out.println(" " + filename + " not found.");
         }
         return result;
     }

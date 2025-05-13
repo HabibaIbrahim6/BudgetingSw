@@ -1,13 +1,23 @@
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The {@code UserDB} class provides functionality to save and retrieve
+ * users and their reminders from a file-based storage system.
+ * <p>
+ * It handles user registration, authentication, and reminder management.
+ */
 public class UserDB {
     private static final String USER_FILE_PATH = "users.txt";
 
+    /**
+     * Saves a new user to the user file.
+     *
+     * @param user the {@link User} object to save
+     */
     public static void saveUser(User user) {
         try {
             String userData = user.toString() + System.lineSeparator();
@@ -18,6 +28,12 @@ public class UserDB {
         }
     }
 
+    /**
+     * Checks if an email already exists in the user file.
+     *
+     * @param email the email address to check
+     * @return {@code true} if the email exists, otherwise {@code false}
+     */
     public static boolean emailExists(String email) {
         try {
             List<User> users = readUsers();
@@ -32,6 +48,11 @@ public class UserDB {
         return false;
     }
 
+    /**
+     * Reads all users from the user file.
+     *
+     * @return a list of {@link User} objects
+     */
     public static List<User> readUsers() {
         List<User> users = new ArrayList<>();
         try {
@@ -55,6 +76,13 @@ public class UserDB {
         return users;
     }
 
+    /**
+     * Authenticates a user based on email and password.
+     *
+     * @param email    the email address
+     * @param password the password
+     * @return the authenticated {@link User} object, or {@code null} if not found
+     */
     public static User authenticateUser(String email, String password) {
         List<User> users = readUsers();
         for (User user : users) {
@@ -66,6 +94,12 @@ public class UserDB {
         return null;
     }
 
+    /**
+     * Saves a reminder associated with a user's email.
+     *
+     * @param email    the user's email address
+     * @param reminder the {@link Reminder} object to save
+     */
     public static void saveReminderToUser(String email, Reminder reminder) {
         try {
             String reminderData = email + "," + reminder.toString() + "\n";
@@ -77,6 +111,12 @@ public class UserDB {
         }
     }
 
+    /**
+     * Retrieves all reminders for a specific user based on email.
+     *
+     * @param email the user's email address
+     * @return a list of {@link Reminder} objects
+     */
     public static List<Reminder> getUserReminders(String email) {
         List<Reminder> reminders = new ArrayList<>();
         try {
