@@ -15,7 +15,7 @@ public class IncomeController {
      * Submits a new income record after validating input,
      * then saves it to a file.
      *
-     * @param source The source of the income (e.g., job, freelance).
+     * @param source The source of the income (e.g.., job, freelance).
      * @param amount The amount of income.
      * @param date   The date of the income.
      */
