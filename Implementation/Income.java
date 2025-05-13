@@ -10,7 +10,7 @@ public class Income {
     /**
      * Constructs an Income object.
      *
-     * @param source The source of the income (e.g., salary, freelance).
+     * @param source The source of the income (e.g.., salary, freelance).
      * @param amount The amount of income.
      * @param date   The date the income was received.
      */
