@@ -5,7 +5,7 @@ CS251 - Intro to Software Engineering
  Team Members:
 - Habeba Ebrahim  - 20230116
 - Habeba Ahmed    - 20230633
-- Hind     - 2023
+- Hind     - 20230577
 
  Project Title:
 Personal Budgeting Application
