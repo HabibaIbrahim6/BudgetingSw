@@ -23,9 +23,9 @@ public class Main {
 
     private static void displayGuestMenu() {
         System.out.println("\n===== Main Menu =====");
-        System.out.println("1. Sign Up");
-        System.out.println("2. Login");
-        System.out.println("3. Exit");
+        System.out.println("1. Sign Up.");
+        System.out.println("2. Login.");
+        System.out.println("3. Exit.");
         System.out.print("Choose an option: ");
 
         int choice;
