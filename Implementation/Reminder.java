@@ -99,10 +99,10 @@ public class Reminder {
     @Override
     public String toString() {
         return "Reminder{" +
-               "reminderId='" + reminderId + '\'' +
-               ", title='" + title + '\'' +
-               ", date='" + date + '\'' +
-               ", time='" + time + '\'' +
+               "reminderId= '" + reminderId + '\'' +
+               ", title= '" + title + '\'' +
+               ", date= '" + date + '\'' +
+               ", time= '" + time + '\'' +
                '}';
     }
 
