@@ -57,13 +57,13 @@ public class ReminderController {
         }
 
         System.out.println("\nYour Reminders:");
-        System.out.println("----------------------------------------");
+        System.out.println("---------------------------------------------");
         for (Reminder reminder : reminders) {
             System.out.println("ID: " + reminder.getReminderId());
             System.out.println("Title: " + reminder.getTitle());
             System.out.println("Date: " + reminder.getDate());
             System.out.println("Time: " + reminder.getTime());
-            System.out.println("----------------------------------------");
+            System.out.println("---------------------------------------------");
         }
     }
 }
