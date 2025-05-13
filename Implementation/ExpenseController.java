@@ -88,7 +88,7 @@ public class ExpenseController {
             }
             br.close();
         } catch (Exception e) {
-            System.out.println("Error reading expenses: " + e.getMessage());
+            System.out.println("Error in reading expenses: " + e.getMessage());
         }
 
         return expenses;
