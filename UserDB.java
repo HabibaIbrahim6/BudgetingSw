@@ -8,6 +8,16 @@ import java.util.List;
 public class UserDB {
     private static final String USER_FILE_PATH = "users.txt";
 
+    public static void saveUser(User user) {
+        try {
+            String userData = user.toString() + System.lineSeparator();
+            Files.write(Paths.get(USER_FILE_PATH), userData.getBytes(),
+                    StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (Exception e) {
+            AuthenticationController.showError("Error saving user: " + e.getMessage());
+        }
+    }
+
     public static boolean emailExists(String email) {
         try {
             List<User> users = readUsers();
